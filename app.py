@@ -6,17 +6,17 @@ app = Flask(__name__)
 PRODUCTS = [
   {
     'id': 1,
-    'title': "producto 1",
+    'title': "Producto 1",
     'precio': 33.44
   },
   {
     'id': 2,
-    'title': "producto 2",
+    'title': "Producto 2",
     'precio': 55.66
   },
   {
     'id': 3,
-    'title': "producto 3",
+    'title': "Producto 3",
     'precio': 77.88
   }
 ]
