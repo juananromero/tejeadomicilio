@@ -1,2 +1,3 @@
+# Fichero requirements.txt para tejeadomicilio
 Flask
 gunicorn
