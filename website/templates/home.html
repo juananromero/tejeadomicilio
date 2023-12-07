@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}TejeDOM{% endblock %}
+{% block titlepage %}Tejedora Compra a Domicilio{% endblock %}
+{% block subtitle %} Lista de Productos{% endblock %}
+
+{% block body %}
+<div class="container">
+  
+  {% for i in range(0,10) %}
+  <table class="table table-hover">
+    <tbody>
+      <tr onclick="toggle_triangle('{{ loop.index }}')"> 
+        <th><span  id ="triangulo_{{ loop.index }}" style='color: #FF0000;font-size:1.5em;'>&#9658;</span>
+        {{tipos[i]}}</th>
+      </tr>
+    </tbody>
+  </table>
+  <table id="tipoDiv_{{ loop.index }}" class="table table-hover" style="display: none">
+    <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Proveedor</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Cesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for j in range(length[i],length[i+1])%}
+        <tr>
+          <th scope="row">{{products[j].id}}</th>
+          <td>{{products[j].nombre}}</td>
+          <td>{{products[j].proveedor}}</td>
+          <td class="align-top">
+          {% if products[j].precios  %}
+          {{products[j].precio}}  <br> {{"soci@s:" + products[j].precios}}
+          {% else %}
+          {{products[j].precio}}
+          {% endif %}
+          </td>
+          <td><input type="number" class="form-control" id="input1" placeholder="0">
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary btn-sm">
+            Añadir a la cesta <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+  {% endfor %}
+</div>
+  
+  <div class="text-center">    
+    <button class="btn btn-primary btn-lg">Enviar Pedido</button>
+    <p class="toggle_triangle()mt-4">Copyright 2023, Mercao Social de Córdoba</p>
+  </div>
+{% endblock %}
+
+{% block code %}
+<script>
+  function toggle_triangle(id){
+    var idHead="tipo_"+(id);
+    var idDiv="tipoDiv_"+(id);
+    var idT="triangulo_"+(id);
+    var x = document.getElementById(idDiv);
+    if (x.style.display == "none"){
+      x.style.display = "block";
+      document.getElementById(idT).innerHTML = "&#9660;";
+    }else{
+      x.style.display = "none";
+      document.getElementById(idT).innerHTML = "&#9658;";
+    } 
+  }
+  </script>
+{% endblock %}

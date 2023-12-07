@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}TejeDOM{% endblock %}
+{% block titlepage %}Tejedora Compra a Domicilio{% endblock %}
+{% block subtitle %}Añadir Producto{% endblock %}
+
+{% block body %}
+<div class="container">
+    <form method="post">
+        <div class="mb-2">
+            <label for="nombre">Nombre: </label><br>
+            <input type="text" name="nombre" required placeholder="Obligatorio"><br>
+        </div>
+        <div class="mb-2">
+            <label for="proveedor">Proveedor: </label><br>
+            <input type="text" name="proveedor" required placeholder="Obligatorio"><br>
+        </div>
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción:</label>
+            <textarea class="form-control" type="text" name="descripcion" rows="3"  placeholder="Opcional"></textarea>
+        </div>
+        <div>
+            <label>Categoría 1: </label><br>
+            <select name="tipo" id="tipo">
+                <option value="" disabled selected hidden>Elige una (obligatorio)</option>
+                {% for tipo in tipos %}
+                    <option value="{{ tipo }}">{{ tipo }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-2">
+            <label>Categoría 2: </label><br>
+            <select name="subtipo" id="subtipo">
+                <option value="" disabled selected hidden>Elige una (obligatorio)</option>
+                {% for subtipo in subtipos %}
+                    <option value="{{ subtipo }}">{{ subtipo }}</option>
+                {% endfor %}
+            </select>        
+        </div>
+        <div class="mb-2">
+        <label>Categoría 3: </label><br>
+        <input type="text" name="subsubtipo" placeholder="Opcional"><br>   
+        <div class="mb-3">
+            <label for="observaciones" class="form-label">Observaciones:</label>
+            <textarea class="form-control" type="text" name="observaciones" placeholder="Opcional" rows="3"></textarea>
+        </div>
+        <label>Precio: </label><br>
+        <input type="text" name="precio" required placeholder="Obligatorio"><br> 
+        <label>Precio Socios (dejar vacío si es el mismo): </label><br>
+        <input type="text" name="precios" placeholder="Opcional"><br>
+        <label>Activo (Si/No mostrar a clientes): </label><br>
+        <select name="activo" id="activo"><br>                    
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+        </select>
+        </div>
+
+        <div class="text-center">    
+            <button class="btn btn-primary btn-lg" type="submit">Guardar Nuevo Producto</button>
+            <p class="toggle_triangle()mt-4">Copyright 2023, Mercao Social de Córdoba</p>
+          </div>
+    </form>
+</div>
+{% endblock %}
